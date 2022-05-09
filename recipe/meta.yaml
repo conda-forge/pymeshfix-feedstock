@@ -1,16 +1,16 @@
 {% set name = "pymeshfix" %}
-{% set version = "0.15.0" %}
+{% set version = "0.16.0" %}
 
 package:
   name: pymeshfix
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pymeshfix-{{ version }}.tar.gz
-  sha256: 7261189199a9130ca4af01dc8868e6ccedc3bafda5eab2aa50535c2563552316
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 2e50c499c3baa072bc7bdfbd3ea2dfbcd799b2c6217894e6948c69c82d836d46
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
@@ -46,3 +46,4 @@ about:
 extra:
   recipe-maintainers:
     - akaszynski
+    - larsoner
