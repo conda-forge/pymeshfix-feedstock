@@ -35,10 +35,11 @@ requirements:
 test:
   imports:
     - pymeshfix
-  commands:
-    - pip check
+  commands:      # [py!=311 or not win]
+    - pip check  # [py!=311 or not win]
   requires:
     - pip
+    - setuptools
 
 about:
   home: https://github.com/pyvista/pymeshfix
