@@ -8,18 +8,21 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 52a8c1c8076dc29d4412a7283717088f68deda0ce155b7e3100e278434c91612
+  patches:
+    # This can be removed once the sdist is Python 3.11 compatible
+    - force_cython.patch
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
     - {{ compiler('cxx') }}
-    - cython
+    - cython >=0.29.32
     - python
   host:
-    - cython
+    - cython >=0.29.32
     - numpy
     - pip
     - python
@@ -32,10 +35,10 @@ requirements:
 test:
   imports:
     - pymeshfix
-  commands:
-    - pip check
-  requires:
-    - pip
+  commands:      # [py!=311 or not win]
+    - pip check  # [py!=311 or not win]
+  requires:      # [py!=311 or not win]
+    - pip        # [py!=311 or not win]
 
 about:
   home: https://github.com/pyvista/pymeshfix
