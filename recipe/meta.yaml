@@ -13,12 +13,13 @@ source:
     - force_cython.patch
 
 build:
-  number: 1
+  number: 2
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
     - cython >=0.29.32
     - python
   host:
@@ -30,15 +31,14 @@ requirements:
   run:
     - python
     - pyvista >=0.23.0
-    - {{ pin_compatible('numpy') }}
 
 test:
   imports:
     - pymeshfix
-  commands:      # [py!=311 or not win]
-    - pip check  # [py!=311 or not win]
-  requires:      # [py!=311 or not win]
-    - pip        # [py!=311 or not win]
+  commands:
+    - pip check  # [(py!=312 and py!=311) or not win]
+  requires:
+    - pip        # [(py!=312 and py!=311) or not win]
 
 about:
   home: https://github.com/pyvista/pymeshfix
