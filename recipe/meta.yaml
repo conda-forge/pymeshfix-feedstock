@@ -1,5 +1,5 @@
 {% set name = "pymeshfix" %}
-{% set version = "0.16.1" %}
+{% set version = "0.17.0" %}
 
 package:
   name: pymeshfix
@@ -7,14 +7,15 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 52a8c1c8076dc29d4412a7283717088f68deda0ce155b7e3100e278434c91612
+  sha256: ce809a1741aaf670a3df98cf6aaba15881223bd7230928effc021395455397c9
   patches:
     # This can be removed once the sdist is Python 3.11 compatible
     - force_cython.patch
 
 build:
-  number: 2
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
+  skip: true  # [py<39]
 
 requirements:
   build:
