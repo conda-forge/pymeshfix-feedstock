@@ -27,6 +27,7 @@ requirements:
     - cython >=0.29.32
     - numpy
     - pip
+    - setuptools
     - python
     - glew
   run:
