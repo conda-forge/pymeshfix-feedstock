@@ -13,7 +13,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '17'
+- '18'
 glew:
 - '2.1'
 macos_machine:
@@ -31,4 +31,3 @@ target_platform:
 zip_keys:
 - - python
   - numpy
-  - channel_sources
