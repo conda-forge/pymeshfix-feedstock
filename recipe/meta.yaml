@@ -8,25 +8,29 @@ package:
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: c92dcccba6921fed6bdab0b6b8d232f4167407e7acbba959895c8340be7cf3a6
-  patches:
-    # This can be removed once the sdist is Python 3.11 compatible
-    - force_cython.patch
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
+  script:
+    - export CMAKE_GENERATOR=Ninja  # [unix]
+    - {{ PYTHON }} -m pip install . -vv
   skip: true  # [py<39]
 
 requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ stdlib("c") }}
-    - cython >=0.29.32                      # [build_platform != target_platform]
     - python                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}    # [build_platform != target_platform]
     - numpy                                 # [build_platform != target_platform]
+    - scikit-build-core
+    - nanobind
+    - cmake
+    - ninja
   host:
-    - cython >=0.29.32
+    - glew
+    - scikit-build-core
+    - nanobind
     - numpy
     - pip
     - setuptools
