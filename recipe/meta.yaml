@@ -26,9 +26,9 @@ requirements:
     - ninja
   host:
     - glew
-    - ninja
+    - scikit-build-core
     - numpy
-    - pip >=23
+    - pip
     - python
   run:
     - python
