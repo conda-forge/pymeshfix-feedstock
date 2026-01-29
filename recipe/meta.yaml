@@ -12,7 +12,7 @@ source:
 build:
   number: 0
   script:
-    - export CMAKE_GENERATOR=Ninja # [unix]
+    - export CMAKE_GENERATOR=Ninja  # [unix]
     - {{ PYTHON }} -m pip install . -vv
   skip: true  # [py<39]
 
