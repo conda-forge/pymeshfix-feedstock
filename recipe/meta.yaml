@@ -11,7 +11,9 @@ source:
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
+  script:
+    - export CMAKE_GENERATOR=Ninja # [unix]
+    - {{ PYTHON }} -m pip install . -vv
   skip: true  # [py<39]
 
 requirements:
@@ -22,11 +24,13 @@ requirements:
     - cross-python_{{ target_platform }}    # [build_platform != target_platform]
     - numpy                                 # [build_platform != target_platform]
     - scikit-build-core
+    - nanobind
     - cmake
     - ninja
   host:
     - glew
     - scikit-build-core
+    - nanobind
     - numpy
     - pip
     - python
