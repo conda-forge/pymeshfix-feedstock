@@ -21,14 +21,15 @@ requirements:
     - python                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}    # [build_platform != target_platform]
     - numpy                                 # [build_platform != target_platform]
+    - scikit-build-core
+    - cmake
+    - ninja
   host:
-    - cmake >=3.15
     - glew
     - ninja
     - numpy
     - pip >=23
     - python
-    - scikit-build-core
   run:
     - python
     - pyvista >=0.23.0
