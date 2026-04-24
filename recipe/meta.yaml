@@ -1,5 +1,5 @@
 {% set name = "pymeshfix" %}
-{% set version = "0.18.0" %}
+{% set version = "0.18.1" %}
 
 package:
   name: pymeshfix
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: c92dcccba6921fed6bdab0b6b8d232f4167407e7acbba959895c8340be7cf3a6
+  sha256: c3386a123e3ecfcff59f229a4fc620ae0e03fa9c7fec025fbd2885349fa8fa3f
 
 build:
-  number: 1
+  number: 0
   script:
     - export CMAKE_GENERATOR=Ninja  # [unix]
     - {{ PYTHON }} -m pip install . -vv
